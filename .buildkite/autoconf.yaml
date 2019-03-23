@@ -1,0 +1,19 @@
+pipelines:
+- name: buildkite-pipeline-manager-build
+  repository: git@github.com:irisvr/buildkite-pipeline-manager
+  steps: 
+  - type: "script"
+    name: ":pipeline:"
+    command: "buildkite-agent pipeline upload .buildkite/build-pipeline.yaml"
+    agent_query_rules: 
+    - "queue=linux"
+- name: buildkite-pipeline-manager-deploy
+  repository: git@github.com:irisvr/buildkite-pipeline-manager
+  provider_settings:
+    trigger_mode: "none"
+  steps: 
+  - type: "script"
+    name: ":pipeline:"
+    command: "buildkite-agent pipeline upload .buildkite/build-pipeline.yaml"
+    agent_query_rules: 
+    - "queue=linux"
