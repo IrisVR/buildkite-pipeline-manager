@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/gdhagger/go-buildkite/buildkite"
+	"github.com/buildkite/go-buildkite/buildkite"
 	log "github.com/sirupsen/logrus"
 	flag "github.com/spf13/pflag"
 	"gopkg.in/yaml.v1"
