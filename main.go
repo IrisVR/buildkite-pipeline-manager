@@ -57,7 +57,7 @@ func init() {
 	flag.StringVar(&org, "org", "", "Buildkite organisation slug")
 	flag.StringVar(&configFile, "config", ".buildkite/autoconf.yaml", "Configuration file")
 	flag.StringVar(&logLevel, "log-level", log.DebugLevel.String(), "Logging level")
-	flag.StringVar(&logFormat, "log-format", "fluentd", "Logging format")
+	flag.StringVar(&logFormat, "log-format", "fluentd", "Logging format, one of text, json or fluentd")
 	flag.Parse()
 
 	switch logFormat {
