@@ -15,4 +15,5 @@ pipelines:
   - type: "script"
     name: ":pipeline:"
     command: "buildkite-agent pipeline upload .buildkite/build-pipeline.yaml"
-    agent_query_rules: "queue=linux"
+    agent_query_rules:
+    - queue=linux
