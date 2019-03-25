@@ -6,7 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/buildkite/go-buildkite/buildkite"
+	"github.com/gdhagger/go-buildkite/buildkite"
 	joonix "github.com/joonix/log"
 	log "github.com/sirupsen/logrus"
 	flag "github.com/spf13/pflag"
@@ -23,7 +23,7 @@ var client *buildkite.Client
 type pipeline struct {
 	Name             string                    `yaml:"name"`
 	Repository       string                    `yaml:"repository"`
-	Steps            []*buildkite.Step         `yaml:"steps"`
+	Steps            []buildkite.Step          `yaml:"steps"`
 	ProviderSettings *buildkite.GitHubSettings `yaml:"provider_settings"`
 }
 
@@ -35,12 +35,15 @@ func (p pipeline) asCreatePipeline() *buildkite.CreatePipeline {
 		ProviderSettings: p.ProviderSettings,
 	}
 	for i := range p.Steps {
-		r.Steps[i] = *p.Steps[i]
+		r.Steps[i] = p.Steps[i]
 	}
 	return &r
 }
 
 func (p pipeline) asUpdatedPipeline(r *buildkite.Pipeline) *buildkite.Pipeline {
+	for i := range p.Steps {
+		r.Steps[i] = &p.Steps[i]
+	}
 	r.Provider.Settings = p.ProviderSettings
 	return r
 }
@@ -96,21 +99,21 @@ func main() {
 		contextLog.Debug("Checking for existing pipeline")
 		existingPipe, _, _ := client.Pipelines.Get(org, p.Name)
 		if existingPipe != nil {
-			contextLog.Debug("Updating existing pipeline")
 			up := p.asUpdatedPipeline(existingPipe)
+			upJSON, _ := json.Marshal(up)
+			contextLog.WithField("pipeline_data", string(upJSON)).Debug("Updating existing pipeline")
 			_, err := client.Pipelines.Update(org, up)
 			if err != nil {
 				contextLog.Error(err)
-				upJSON, _ := json.Marshal(up)
 				contextLog.Error(string(upJSON))
 			}
 		} else {
-			contextLog.Debug("Creating new pipeline")
 			cp := p.asCreatePipeline()
+			cpJSON, _ := json.Marshal(cp)
+			contextLog.WithField("pipeline_data", string(cpJSON)).Debug("Creating new pipeline")
 			_, _, err := client.Pipelines.Create(org, cp)
 			if err != nil {
 				contextLog.Error(err)
-				cpJSON, _ := json.Marshal(cp)
 				contextLog.Error(string(cpJSON))
 			}
 		}

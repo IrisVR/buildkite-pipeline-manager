@@ -1,9 +1,9 @@
-github.com/buildkite/go-buildkite v2.2.1-0.20190324082940-a095fb53586d+incompatible h1:5VBf+DN+b6UsaJ5FuMJNROlp/6CeOuDFA+CnGPHPD5c=
-github.com/buildkite/go-buildkite v2.2.1-0.20190324082940-a095fb53586d+incompatible/go.mod h1:WTV0aX5KnQ9ofsKMg2CLUBLJNsQ0RwOEKPhrXXZWPcE=
 github.com/cenkalti/backoff v2.1.1+incompatible h1:tKJnvO2kl0zmb/jA5UKAt4VoEVw1qxKWjE/Bpp46npY=
 github.com/cenkalti/backoff v2.1.1+incompatible/go.mod h1:90ReRw6GdpyfrHakVjL/QHaoyV4aDUVVkXQJJJ3NXXM=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+github.com/gdhagger/go-buildkite v2.2.1-0.20190325132738-c961113a7380+incompatible h1:D3wDWVv/XJfVI6kk/ftWVx4An5JgBjagfCBDGIjW4mc=
+github.com/gdhagger/go-buildkite v2.2.1-0.20190325132738-c961113a7380+incompatible/go.mod h1:aCbyNx4e6HE1CDo6sBtZi41fE8hQcC83KccQtPdkC/8=
 github.com/google/go-querystring v1.0.0 h1:Xkwi/a1rcvNg1PPYe5vI8GbeBY/jrVuDX5ASuANWTrk=
 github.com/google/go-querystring v1.0.0/go.mod h1:odCYkC5MyYFN7vkCjXpyrEuKhc/BUO6wN/zVPAxq5ck=
 github.com/joonix/log v0.0.0-20190213172830-51a6cca1fed3 h1:tqmwKErGTTFFdDDeLuOKK2OJZzxaw3xmnlg4y8qj4qY=
