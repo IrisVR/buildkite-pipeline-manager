@@ -1,0 +1,8 @@
+steps:
+  - label: Build
+    agents:
+      queue: linux
+    command: 
+      - docker run --rm -ti -v $(pwd):/src -v $HOME/.cache:/.cache -u $(id -u) -w /src -e CGO_ENABLED=0 golang:1.12 sh -c "go build"
+      - docker build -t gcr.io/irisvr-shared/buildkite-pipeline-manager:${BUILDKITE_COMMIT} .
+      - docker push gcr.io/irisvr-shared/buildkite-pipeline-manager:${BUILDKITE_COMMIT}
